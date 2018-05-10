@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<script src="src/js/main.js"></script>
+	<script src="src/js/jquery-3.1.0.min.js"></script>
+	<script src="src/bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="src/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="src/bootstrap/css/bootstrap-reboot.min.css">
+
+	<style>
+	@import url(https://fonts.googleapis.com/css?family=Roboto:100);
+	::-webkit-scrollbar {
+		display: none;
+	}
+	body{
+		font-family: 'Roboto', sans-serif;
+		font-weight: 100;
+		font-size: 3vh;
+		text-align: center;
+		color: #ffffff;
+	}
+	.m_cover{
+		background-image:url('src/img/cover.png');
+		background-size: contain;
+		background-repeat: repeat-x;
+	}
+	.m_cover2{
+		background-image:url('src/img/cover2.png');
+		background-size: cover;
+	}
+	.page{
+		min-height: 100vh;
+		overflow: hidden;
+	}
+	.m_center{
+		margin:0 auto;
+	}
+	.m_tile{
+		height:100%;
+		width:33.33%;
+		float:left;
+		position: relative;
+	}
+	.m_profile{
+		border-style: solid;
+    	border-radius:100%;
+    	border-color: #ffffff;
+    	border-width: 2px;
+		background-image: url("src/img/profile.jpg");
+		background-size: contain;
+		width: 30vw;
+    	height: 30vw;
+		max-width:200px;
+		max-height:200px;
+	}
+	.m_homePage{
+		background: #af69db; /* Old browsers */
+		background: -moz-linear-gradient(-45deg, #af69db 0%, #7500bf 50%, #de47ac 100%); /* FF3.6-15 */
+		background: -webkit-linear-gradient(-45deg, #af69db 0%,#7500bf 50%,#de47ac 100%); /* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(135deg, #af69db 0%,#7500bf 50%,#de47ac 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#af69db', endColorstr='#de47ac',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+		margin:0px;
+	}
+	.m_about{
+		background: #e91e63; /* Old browsers */
+		background: -moz-linear-gradient(45deg, #e91e63 0%, #8f0222 45%, #de47ac 100%); /* FF3.6-15 */
+		background: -webkit-linear-gradient(45deg, #e91e63 0%,#8f0222 45%,#de47ac 100%); /* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(45deg, #e91e63 0%,#8f0222 45%,#de47ac 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e91e63', endColorstr='#de47ac',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+		margin:0px;
+	}
+	.m_aboutIcon{
+		border-style: solid;
+    	border-radius:100%;
+    	border-color: #ffffff;
+    	border-width: 2px;
+		background-image: url("src/img/about.gif");
+		background-size: contain;
+		width: 30vw;
+    	height: 30vw;
+		max-width:200px;
+		max-height:200px;
+	}
+	.m_softIcon{
+		border-style: solid;
+    	border-radius:100%;
+    	border-color: #ffffff;
+    	border-width: 2px;
+		background-image: url("src/img/soft.png");
+		background-size: contain;
+		width: 30vw;
+    	height: 30vw;
+		max-width:200px;
+		max-height:200px;
+	}
+	.m_soft{
+		background: #e91e63; /* Old browsers */
+		background: -moz-linear-gradient(-45deg, #e91e63 0%, #00a0ff 51%, #00e5ff 100%); /* FF3.6-15 */
+		background: -webkit-linear-gradient(-45deg, #e91e63 0%,#00a0ff 51%,#00e5ff 100%); /* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(135deg, #e91e63 0%,#00a0ff 51%,#00e5ff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e91e63', endColorstr='#00e5ff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+		margin:0px;
+	}
+	.m_gamesIcon{
+		border-style: solid;
+    	border-radius:100%;
+    	border-color: #ffffff;
+    	border-width: 2px;
+		background-image: url("src/img/game.png");
+		background-size: contain;
+		width: 30vw;
+    	height: 30vw;
+		max-width:200px;
+		max-height:200px;
+	}
+	.m_games{
+		background: #d5e000; /* Old browsers */
+		background: -moz-linear-gradient(45deg, #d5e000 0%, #00ad48 49%, #00ad48 49%, #00e5ff 99%); /* FF3.6-15 */
+		background: -webkit-linear-gradient(45deg, #d5e000 0%,#00ad48 49%,#00ad48 49%,#00e5ff 99%); /* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(45deg, #d5e000 0%,#00ad48 49%,#00ad48 49%,#00e5ff 99%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d5e000', endColorstr='#00e5ff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+		margin:0px;
+	}
+	.m_resumeIcon{
+		border-style: solid;
+    	border-radius:100%;
+    	border-color: #ffffff;
+    	border-width: 2px;
+		background-image: url("src/img/resume.png");
+		background-size: contain;
+		width: 30vw;
+    	height: 30vw;
+		max-width:200px;
+		max-height:200px;
+	}
+	.m_resume{
+		background: #d5e000; /* Old browsers */
+		background: -moz-linear-gradient(-45deg, #d5e000 0%, #f29100 24%, #cc0003 100%); /* FF3.6-15 */
+		background: -webkit-linear-gradient(-45deg, #d5e000 0%,#f29100 24%,#cc0003 100%); /* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(135deg, #d5e000 0%,#f29100 24%,#cc0003 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d5e000', endColorstr='#cc0003',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+		margin:0px;
+	}
+	.m_contactIcon{
+		border-style: solid;
+    	border-radius:100%;
+    	border-color: #ffffff;
+    	border-width: 2px;
+		background-image: url("src/img/contact.png");
+		background-size: contain;
+		width: 30vw;
+    	height: 30vw;
+		max-width:200px;
+		max-height:200px;
+	}
+	.m_contact{
+		background: #440059; /* Old browsers */
+		background: -moz-linear-gradient(45deg, #440059 0%, #a5005d 50%, #cc0003 100%); /* FF3.6-15 */
+		background: -webkit-linear-gradient(45deg, #440059 0%,#a5005d 50%,#cc0003 100%); /* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(45deg, #440059 0%,#a5005d 50%,#cc0003 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#440059', endColorstr='#cc0003',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+		margin:0px;
+	}
+	#m_contactForm{
+		font-size: 2vh;
+	}
+	.w{
+		width:100vw
+	}
+	.tab{
+		padding-top: 5vh;
+	}
+	.soft{
+		background-size:cover;
+		width:60%;
+		height:60%;
+		margin:0 auto;
+		margin-top: 10%;
+    	background-repeat: no-repeat;
+    	background-size: contain;
+	}
+	.game{
+		background-size:cover;
+		width:80%;
+		height:80%;
+		margin:0 auto;
+		margin-top: 10%;
+    	background-repeat: no-repeat;
+    	background-size: contain;
+	}
+	.softTxt{
+		width:100%;
+		position: absolute;
+    	bottom: 0;
+	}
+	</style>
+	<!-- endregion -->
+</head>
+<body onLoad="init()">
+<div class="mobContainer w" style="padding:0px" id="mobileContent">
+	<div class="row m_homePage page">
+		<div class="w tab">
+			<div class="m_center m_profile"></div>
+		</div>
+		<div class="w">
+			<p>
+				Vinodkumar G B
+			</p>
+		</div>
+	</div>
+	<div class="w m_about page">
+		<div class="w tab">
+			<div class="m_center m_aboutIcon"></div>
+		</div>
+		<div class="w">
+			<p>
+				<i>Hey!</i><br/><br/>
+				I am a computer programmer by profession. I pretty much work on any thing I can put my hands on! <br/>
+				From HTML5 AngularJs Lua KDB Python to editing art work in Photoshop exporting in Premier and so on.<br/>
+				Passions? You mean other than watching movies, playing computer games and lying on bed.....<br/>
+				Nothing much! ;)<br/>
+			</p>
+		</div>
+	</div>
+	<div class="w m_soft page">
+		<div class="w tab">
+			<div class="m_center m_softIcon"></div>
+		</div>
+		<div class="w">
+			<p>
+				<i>Software</i><br/><br/>
+				Here are some of the software that I created for Windows<br/>
+			</p>
+		</div>
+		<div class="w" style="height:70vw">
+			<div class="w" style="height:40vw">
+				<div class="m_tile" style="background-color: #673AB7;">
+					<div class="soft" style="background-image:url('src/img/aqua.png')" alt="Aquarium" onClick="window.open('https://drive.google.com/open?id=0B3Cap4ShFpeVdkVVMll4Wkg0bFE')"></div>
+					<div class="softTxt">Aquarium</div>
+				</div>
+				<div class="m_tile" style="background-color: #E91E63;">
+					<div class="soft" style="background-image:url('src/img/collage.png')" alt="Photo_Collage" onClick="window.open('https://drive.google.com/open?id=0B3Cap4ShFpeVdmdKaXYyVFVrTVU')"></div>
+					<div class="softTxt">Photo Collage</div>
+				</div>
+				<div class="m_tile" style="background-color: #009688;">
+					<div class="soft" style="background-image:url('src/img/duplicatefinder.png')" alt="Duplicate_File_Finder" onClick="window.open('https://drive.google.com/open?id=0B3Cap4ShFpeVb0o3V2xDeUxIWVE')"></div>
+					<div class="softTxt">Duplicate File Finder</div>
+				</div>
+			</div>
+			<div class="w" style="height:40vw">
+				<div class="m_tile" style="background-color: #FF9800">
+					<div class="soft" style="background-image:url('src/img/filebasket.png')" alt="File_Basket" onClick="window.open('https://drive.google.com/open?id=0B3Cap4ShFpeVc2JzUHA4UEZPSW8')"></div>
+					<div class="softTxt">File Basket</div>
+				</div>
+				<div class="m_tile" style="background-color: #3F51B5">
+					<div class="soft" style="background-image:url('src/img/note.png')" alt="Quick_Note" onClick="window.open('https://drive.google.com/open?id=0B3Cap4ShFpeVRnFtVTRVTVo5ZVU')"></div>
+					<div class="softTxt">Quick Note</div>
+				</div>
+				<div class="m_tile" style="background-color: #DB4437"></div>
+			</div>
+			<div class="w" onClick="window.open('../Copyright.txt')">☞Copyright (c)</div>
+		</div>
+	</div>
+	<div class="w m_games page">
+		<div class="w tab">
+			<div class="m_center m_gamesIcon"></div>
+		</div>
+		<div class="w">
+			<p>
+				<i>Games</i><br/><br/>
+				Here are some of the games that I created<br/>
+			</p>
+		</div>
+		<div class="w" style="height:70vw">
+			<div class="w" style="height:40vw">
+				<div class="m_tile m_cover" style="background-color: #673AB7" onClick="window.open('../games/Skyshield/main.html')">
+					<div class="game" style="background-image:url('../games/Skyshield/images/SkyShield.png')" alt=SkyShield"></div>
+					<div class="softTxt">SkyShield</div>
+				</div>
+				<div class="m_tile m_cover" style="background-color: #E91E63" onClick="window.open('../games/Numpad/main.html')">
+					<div class="game" style="background-image:url('../games/Numpad/img/Numpad.png')" alt=Numpad"></div>
+					<div class="softTxt">Numpad</div>
+				</div>
+				<div class="m_tile m_cover" style="background-color: #009688"></div>
+			</div>
+			<div class="w" style="height:40vw">
+				<div class="m_tile m_cover" style="background-color: #FF9800"></div>
+				<div class="m_tile m_cover" style="background-color: #3F51B5"></div>
+				<div class="m_tile m_cover" style="background-color: #DB4437"></div>
+			</div>
+		</div>
+	</div>
+	<div class="w m_resume page">
+		<div class="w tab">
+			<div class="m_center m_resumeIcon"></div>
+		</div>
+		<div class="w">
+			<p>
+				<i>Resume</i><br/><br/>
+				12+ years of experience in the field of Web and multimedia demonstrating strong analytical and problem solving	skills and ability to follow through projects from inception to completion. Client interaction, team handling.<br/>
+				• Experience in HTML5, AngularJS, DHTML, XML, CSS, JavaScript, Sound forge and more.<br/>
+				• Experience in Adobe Dreamweaver, Photoshop, Flash.<br/>
+			</p>
+		</div>
+		<div style="margin:0 auto;width:80vw;height:3vh;border:#ffffff thin solid;font-size: 2vh;" onclick="window.open('https://drive.google.com/open?id=1Zbk_e4P1F7fPsRl2bRU07RT04HaGivQa')">Resume</div>
+	</div>
+	<div class="w m_contact page">
+		<div class="w tab">
+			<div class="m_center m_contactIcon"></div>
+		</div>
+		<div class="w">
+				<p>
+					<i>Contact Me!</i><br/>
+				</p>
+			</div>
+		<div class="m_cover2 w">
+			<div class="conForm form-group" style="padding:2vw">
+				<form name="conForm" id="conForm">
+					<br/>
+					<label for="conName">Name:</label>
+					<input type="text" name="name" value="" id="conName" class="form-control" required placeholder="Your name" pattern="[a-zA-Z ]{2,15}" title="2-15 Chars"/><br/>
+					<label for="conEmail">Email:</label>
+					<input type="email" name="email" value="" id="conEmail" class="form-control" required placeholder="Enter a valid email address"/><br/>
+					<label for="conTxt">Message:</label>
+					<textarea id="conTxt" name="message" class="form-control" required placeholder="Hi!"></textarea><br/>
+				</form>
+				<button id="send" class="btn btn-default" style="width:100%" onclick="send()">Submit</button>
+				<div id="resForm" class="alert" style="height:20px;font-size: 15px;line-height: 0;"></div>
+				<div>
+					<div class="" style="">
+							<div style="margin-top: 2px; float:left;">
+								<iframe src="https://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.vinodkumargb.somee.com%2F&width=96&layout=button&action=like&size=small&show_faces=true&share=true&height=65&appId=645208468824668" width="96" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+							</div>
+							<div style="float:left;width:20px;margin-top: 0px;margin-left: 15px;">
+								<button title="Twitter" type="button" class="btn btn-md btn-default" onclick="window.open('https://twitter.com/vinodkumargb')" style="height:20px; background-image:url('src/img/twitter.png');background-size: contain;background-repeat: no-repeat;">&nbsp;</button>
+							</div>
+							<div style="float:left;width:20px;margin-top: 0px;margin-left: 20px;">
+								<button title="LinkedIn" type="button" class="btn btn-md btn-default" onclick="window.open('https://www.linkedin.com/in/vinodkumar-gb-a8324945')" style="height:20px; background-image:url('src/img/inBlue.png');background-size: contain;background-repeat: no-repeat;">&nbsp;</button>
+							</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

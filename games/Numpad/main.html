@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="src/main.js"></script>
+<script src="src/jquery-3.1.0.min.js"></script>
+<script src="src/tweenjs-0.6.2.min.js"></script>
+<script src="src/fireworks.js"></script>
+<link rel="stylesheet" type="text/css" href="src/main.css">
+<style>
+	@import url(https://fonts.googleapis.com/css?family=Roboto:100);
+	body{
+		font-family: 'Roboto', sans-serif;
+		font-weight: bolder;
+		text-align: center;
+		color: #000000;
+		background: sandybrown; /* Old browsers */
+		user-select: none;
+		-moz-user-select: none; /* Firefox */
+      	-ms-user-select: none; 
+   		-khtml-user-select: none; 
+  		-webkit-user-select: none; 
+	}
+	#container{
+		margin:0 auto;
+		background: #C85A17; /* Old browsers */
+		position: absolute;
+	}
+	.sndOn{
+		background-image: url('img/speakerOn.svg');
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+	.sndOff{
+		background-image: url('img/speakerOff.svg');
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+	.musicOn{
+		background-image: url('img/musicOn.svg');
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+	.musicOff{
+		background-image: url('img/musicOff.svg');
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+	.box{
+		background: #fac695; /* Old browsers */
+		background: -moz-radial-gradient(center, ellipse cover, #fac695 0%, #f5ab66 47%, #ef8d31 100%); /* FF3.6-15 */
+		background: -webkit-radial-gradient(center, ellipse cover, #fac695 0%,#f5ab66 47%,#ef8d31 100%); /* Chrome10-25,Safari5.1-6 */
+		background: radial-gradient(ellipse at center, #fac695 0%,#f5ab66 47%,#ef8d31 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fac695', endColorstr='#ef8d31',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+		/*border:rgba(0,0,0,0.2) 1px solid;
+		box-sizing: border-box;
+    	-moz-box-sizing: border-box;
+    	-webkit-box-sizing: border-box;*/
+		-webkit-box-shadow:inset 0px 0px 0px 1px #000;
+    	-moz-box-shadow:inset 0px 0px 0px 1px #000;
+    	box-shadow:inset 0px 0px 0px 1px #ef8d31;
+		font-size: 2em;
+	}
+	#menu{
+		background-color: brown;
+		color: #ffffff;
+		text-align: left;
+	}
+
+</style>
+</head>
+<body onLoad="numpad.init()">
+	<div id="menu">
+		<div style="float:left;height:100%; width:30%;">
+			<select style="width: 80%;height:100%;font-size:1em;background: transparent;color: #fac695;" id="newInit" onchange="numpad.newInit()">
+					<option value="3">3 X 3</option>
+					<option value="4">4 X 4</option>
+					<option value="6">5 X 5</option>
+					<option value="6">6 X 6</option>
+			</select>
+		</div>
+		<div id="snd" class="sndOn" style="float:right;height:100%; width:10%;color:#ffffff" onclick="numpad.soundCtrl()"></div>
+		<div id="music" class="musicOn" style="float:right;height:100%; width:10%;color:#ffffff" onclick="numpad.musicCtrl()"></div>
+		<div style="float:right;width:30%;height:100%;">
+			<span id="moves">Moves: 0</span>
+		</div>
+		<div style="float:right;height:100%; width:20%;" onclick="numpad.newInit()">Reset</div>
+		
+	</div>
+	<div id="container">
+	</div>
+	<!--
+				<div class="pyro" id="fireworks" style="position:absolute">
+			<div style="margin:0 auto;color: #ffffff">YOU WON!</div>
+			<div class="before"></div>
+			<div class="after"></div>
+		</div>
+	-->
+	<audio controls id="sndMove" style="display: none;">
+		<source src="img/select.mp3" type="audio/mpeg">
+	  Your browser does not support the audio element.
+	</audio>
+	<audio controls id="sndNew" style="display: none;">
+		<source src="img/new.mp3" type="audio/mpeg">
+	  Your browser does not support the audio element.
+	</audio>
+	<audio controls id="musicBg" style="display: none;" loop="loop">
+		<source src="img/bg.mp3" type="audio/mpeg">
+	  Your browser does not support the audio element.
+	</audio>
+	
+</body>
+</html>
