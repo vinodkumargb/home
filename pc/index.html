@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<script src="src/js/main.js"></script>
+	<script src="src/js/jquery-3.1.0.min.js"></script>
+	<script src="src/js/easeljs-0.8.2.min.js"></script>
+	<script src="src/js/tweenjs-0.6.2.min.js"></script>
+	<script src="src/js/GlowFilter.js"></script>
+	<script src="src/bootstrap/js/bootstrap.min.js"></script>
+	<script src="src/js/jquery.nicescroll.min.js"></script>
+	<script src="src/js/jquery-animate-css-rotate-scale.js"></script>
+	<script type="text/javascript" src="src/js/jquery.lazy.min.js"></script>
+	<script type="text/javascript" src="src/js/jquery.form-validator.min.js"></script>
+	<script src="src/js/three.min.js"></script>
+	<script src="src/js/earth.js"></script>
+	<script src='src/js/threex.chromakey.js'></script>
+	<script src="src/js/OrbitControls.js"></script>
+	<script src="src/js/Detector.js"></script>
+	<script src="src/js/GPUComputationRenderer.js"></script>
+	<script src="src/js/Projector.js"></script>
+	<script src="src/js/CanvasRenderer.js"></script>
+	<script src="src/js/birds.js"></script>
+	<script  src="src/js/audioVisual.js"></script>
+	<link rel="stylesheet" type="text/css" href="src/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="src/bootstrap/css/bootstrap-reboot.min.css">
+	<link rel="stylesheet" type="text/css" href="src/css/glitch2.css">
+	<link rel="stylesheet" type="text/css" href="src/css/flick1.css">
+	<link rel="stylesheet" type="text/css" href="src/css/animate.css">
+	<!-- <link href='src/calibril.ttf' rel='stylesheet' type='text/css'/> -->
+	
+	<!-- region -->
+	<style>
+	@import url(https://fonts.googleapis.com/css?family=Roboto:100);
+	body::-webkit-scrollbar {
+	    width: 0.5em;
+	}
+	
+	body::-webkit-scrollbar-track {
+		/*-webkit-box-shadow: inset 0 0 6px rgba(255, 0, 0, 0.3);
+		box-shadow: inset 0 0 6px rgba(255, 0, 0, 0.3);*/
+		background-color: rgba(100, 100, 100, 1);
+		background-image:url("src/img/Sequence 01.gif");
+		background-size:cover;
+	}
+	
+	body::-webkit-scrollbar-thumb {
+		background-color: rgb(255, 206, 138);
+		outline: 1px solid rgb(255, 206, 138);
+		border-radius: 10px;
+		width:2px;
+		background: linear-gradient(-45deg, #E73C7E,rgb(255,150,0));
+		-webkit-animation: Gradient 15s ease infinite;
+		-moz-animation: Gradient 15s ease infinite;
+		animation: Gradient 15s ease infinite;
+	}
+	.boxn{
+		background: url(src/img/landHouseNight.gif);
+		background-size: cover;
+	}
+	.boxx{
+		background: url(src/img/hsn.png);
+		background-size: cover;
+	}
+	.boxx:hover{
+		background: url(src/img/landHouse.gif);
+		background-size: cover;
+	}
+	.box{
+		background: url(src/img/landn.png);
+		background-size: cover;
+	}
+	.box:hover{
+		background: url(src/img/land.gif);
+    	background-size: 550%;
+		background-blend-mode: screen;
+		background-size: cover;
+	}
+	@-webkit-keyframes boxBgNove {
+		from {
+			background-blend-mode: screen;
+		}
+		to {
+			background-blend-mode: luminosity;
+		}
+	}
+
+	@media (max-width: 1024px) {
+		#canvas-container {
+			display: none; 
+		} 
+	}
+
+	#canvas-container{
+		width:1024px;
+		height:300px;
+	}
+
+	@font-face {
+	  font-family: 'calib';
+	  src: url('src/other/calibril.ttf') format('truetype');
+	}
+
+	html {
+		/*background: url("src/img/bg1.jpeg") no-repeat center fixed; 
+		background-size: cover;*/
+	}
+	body{
+		background-color:transparent;
+		font-family: 'Roboto', sans-serif, Arial;
+		color:#FFFFFF;
+		cursor:url("src/img/curser.png"),auto;
+		
+	}
+	html, body {
+		max-width: 100%;
+		overflow-x: hidden;
+	}
+	.btn:not(:disabled):not(.disabled){
+		cursor:url("src/img/curserLink.png"),auto;
+	}
+	button{
+		cursor:url("src/img/curserLink.png"),auto;
+	}
+	h4{
+		color:#FFFFFF;
+	}
+	
+	.rrbox{
+		border-radius: 03px;
+		border-color: #FFFFFF;
+		border-width: 1px;
+		border-style: solid;
+		/*background-color: #17191C;*/
+		padding: 5px;
+		padding-left: 10px;
+		padding-right: 10px;
+		margin-top: 30px;
+		-moz-box-shadow:1px 1px 1px 0px #333333;
+   		-webkit-box-shadow:1px 1px 1px 0px #333333;
+   		box-shadow:1px 1px 1px 0px #333333;
+	}
+	.themeIcon{
+		-moz-box-shadow:1px 1px 1px 0px #333333;
+   		-webkit-box-shadow:1px 1px 1px 0px #333333;
+   		box-shadow:1px 1px 1px 0px #333333;
+		margin-left: 5px;
+		border:white thin solid;
+	}
+	.rrbg{
+		background-color: rgba(0,0,0,0.5);
+		padding: 5px;
+	}
+	.container{
+		width:1024px;
+	}	
+	.rrcircle{
+		border-style: solid;
+		border-radius: 100%;
+		border-color: #ffffff;
+		border-width: 2px;
+	}
+
+	.ln1{
+		border-bottom: solid 1px #ffffff;
+		border-right: solid 1px #ffffff;
+		margin-top: 8px;
+		margin-left: -31px;
+		margin-right: -73px;
+		height: 82px;
+	}
+	
+	.ln2{
+		border-right: solid 1px #ffffff;
+		margin-top: 8px;
+		margin-right: -515px;
+		height: 120px;
+	}
+	
+	.bg1{
+		background-image:url("src/img/bg2.png");
+		text-shadow: 1px 1px 2px rgba(150, 150, 150, 1);
+		font-style: italic;
+		background-size: cover;
+		background-image: url("src/img/bg-cloudsn.png");
+		background-position: 0px 0px;
+		background-repeat: repeat-x;
+		animation: animatedClouds 50s linear infinite;
+	}	
+	.bg1:hover{
+			text-shadow: 1px 1px 2px rgba(150, 150, 150, 1);
+			font-style: italic;
+			background-size: cover;
+			background-image: url("src/img/bg-clouds.png");
+			background-position: 0px 0px;
+			background-repeat: repeat-x;
+			animation: animatedClouds 50s linear infinite;
+		}
+	#aboutMe{
+		/*background-image: url("src/img/Sequence 01.gif");
+    	background-size: cover;
+		background-blend-mode: soft-light;
+		*/
+		padding-top: 50px;
+    	padding-left: 50px;
+	}
+
+	.soft{
+		background-size:cover;
+		width:60px;
+		height:60px;
+		float:left;
+		margin:10px;
+		margin-left:100px;
+	}
+	.games{
+		height:5px;
+		border-radius:20px;
+		border:rgba(255,255,255,0.2) solid 1px;
+		background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+		background-size: 400% 400%;
+		-webkit-animation: Gradient 15s ease infinite;
+		-moz-animation: Gradient 15s ease infinite;
+		animation: Gradient 15s ease infinite;
+	}
+	@-webkit-keyframes Gradient {
+		0% {
+			background-position: 0% 50%
+		}
+		50% {
+			background-position: 100% 50%
+		}
+		100% {
+			background-position: 0% 50%
+		}
+	}
+
+	@-moz-keyframes Gradient {
+		0% {
+			background-position: 0% 50%
+		}
+		50% {
+			background-position: 100% 50%
+		}
+		100% {
+			background-position: 0% 50%
+		}
+	}
+
+	@keyframes Gradient {
+		0% {
+			background-position: 0% 50%
+		}
+		50% {
+			background-position: 100% 50%
+		}
+		100% {
+			background-position: 0% 50%
+		}
+	}
+	.effect7
+	{
+		position:relative;
+		-webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+		-moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+				box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+	}
+	.effect7:before, .effect7:after
+	{
+		content:"";
+		position:absolute;
+		z-index:-1;
+		-webkit-box-shadow:0 0 20px rgba(0,0,0,0.8);
+		-moz-box-shadow:0 0 20px rgba(0,0,0,0.8);
+		box-shadow:0 0 20px rgba(0,0,0,0.8);
+		top:0;
+		bottom:0;
+		left:10px;
+		right:10px;
+		-moz-border-radius:100px / 10px;
+		border-radius:100px / 10px;
+	}
+	.effect7:after
+	{
+		right:10px;
+		left:auto;
+		-webkit-transform:skew(8deg) rotate(3deg);
+		-moz-transform:skew(8deg) rotate(3deg);
+			-ms-transform:skew(8deg) rotate(3deg);
+			-o-transform:skew(8deg) rotate(3deg);
+				transform:skew(8deg) rotate(3deg);
+	}
+	.gameAnim1{
+		width: 40px;
+		height: 40px;
+		background-image: url(src/img/game1.gif);
+		background-size: cover;
+		margin-top: -41px;
+		margin-left: 180px;
+		position: absolute;
+		animation: marquee__content 10s linear infinite alternate;
+	}
+	
+	@keyframes marquee__inner {
+		0% {
+			margin-left: 180px;
+		}
+		100% {
+			margin-left: 850px;
+		}
+	}
+	@keyframes marquee__content {
+		0% {
+			margin-left: 850px;
+		}
+		100% {
+			margin-left: 200px;
+		}
+	}
+	.gameIcon{
+		width:100px;
+		height:100px;
+		background-size:cover;
+		background-repeat: no-repeat;
+		margin: 0 auto;
+		line-height: 300px;
+	}
+	.gameBG{
+		background-image: url("src/img/sqr.png");
+	}
+	.resume{
+		background: #ff9600; /* Old browsers */
+		background: -moz-linear-gradient(top, #ff9600 0%, #f07832 51%, #ff6400 100%); /* FF3.6-15 */
+		background: -webkit-linear-gradient(top, #ff9600 0%,#f07832 51%,#ff6400 100%); /* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(to bottom, #ff9600 0%,#f07832 51%,#ff6400 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff9600', endColorstr='#ff6400',GradientType=0 ); /* IE6-9 */
+		/*background: url(src/img/resumeBG.png);*/
+		color: #ffffff;
+		background-repeat: no-repeat;
+		background-size: cover;
+		width:1024px;
+		height:400px;
+	}
+	.pic{
+		background-image: url(src/img/vin2.svg);
+		background-size: 800px 800px;
+		background-repeat: no-repeat;
+		border: #ffffff solid 2px;
+		width: 210px;
+		height: 240px;
+		z-index: 1;
+		/*margin-top: 7px;
+		margin-left: 105px;*/
+	}
+	.resumeHead{
+		font-family: 'calib', sans-serif, Arial;
+		color:#FFFFFF;
+		height:300px;
+		position:absolute;
+		z-index:3;
+		left: 450px;
+		top: 60px;
+	}
+	.resumePic{
+		position: absolute;
+		z-index: 2;
+		width: 215px;
+		height: 214px;
+		left: 177px;
+		top: 69px;
+		display: none;
+	}
+	.resDwn{
+		position: absolute;
+		z-index: 10;
+		width: 200px;
+		height: 30px;
+		color: #FFFFFF;
+		float: right;
+		background-color: transparent;
+		border: white solid thin;
+		top: 320px;
+		right: 60px;
+	}
+	.resDwn:hover{
+		position: absolute;
+		z-index: 10;
+		width: 200px;
+		height: 30px;
+		color: #FFFFFF;
+		float: right;
+		background-color: transparent;
+		border: white solid thin;
+		top: 320px;
+		right: 60px;
+		-webkit-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+		-moz-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+		box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+	}
+	.effect2
+	{
+		position: relative;
+	}
+	.effect2:before, .effect2:after
+	{
+		z-index: -1;
+		position: absolute;
+		content: "";
+		bottom: 15px;
+		left: 10px;
+		width: 50%;
+		top: 80%;
+		max-width:300px;
+		background: #000;
+		-webkit-box-shadow: 0 5px 10px #000;
+		-moz-box-shadow: 0 5px 10px #000;
+		box-shadow: 0 15px 5px #000;
+		-webkit-transform: rotate(-3deg);
+		-moz-transform: rotate(-3deg);
+		-o-transform: rotate(-3deg);
+		-ms-transform: rotate(-3deg);
+		transform: rotate(-3deg);
+	}
+	.effect2:after
+	{
+		-webkit-transform: rotate(3deg);
+		-moz-transform: rotate(3deg);
+		-o-transform: rotate(3deg);
+		-ms-transform: rotate(3deg);
+		transform: rotate(3deg);
+		right: 10px;
+		left: auto;
+	}
+	
+	#cv{
+		border:#ffffff 4px solid;
+		-moz-box-shadow:1px 1px 10px 0px #333333;
+   		-webkit-box-shadow:1px 1px 10px 0px #333333;
+   		box-shadow:1px 1px 10px 0px #333333;
+	}
+	.hdr{
+		text-shadow: 1px 1px 2px rgba(0,0,0,.5);
+    	color: #fe9500;
+	}
+	.shd{
+		-moz-box-shadow:1px 1px 2px 0px #333333;
+   		-webkit-box-shadow:1px 1px 2px 0px #333333;
+   		box-shadow:1px 1px 2px 0px #333333;
+	}
+	.contact{
+		margin-left: 5px;
+		margin-right: 5px;
+		margin-top: 0px;
+		background-color: rgba(0,0,0,0.3);
+	}
+	.cntAnim {
+		background-image: url('src/img/worldmap.png');
+		width: 1000;
+		height: 450px;
+	}
+
+	@-webkit-keyframes marquee {
+		0% {
+			background-position: 0;
+		}
+
+		100% {
+			background-position: -100%;
+		}
+	}
+	#earthId{
+		width:400px;
+		height:400px;
+		margin-left: -10px;
+		background-image: url("src/img/earthBG.png");
+		background-size: contain;
+		background-repeat: no-repeat;
+		z-index: 2;
+		float: right;
+	}
+	.video{
+		width: 100%; 
+		height: auto;
+		position: absolute;
+		top:0px;
+		left:0px;
+		z-index: 1;
+		object-fit: fill;
+	}
+	.softUp{
+		z-index: 2;
+		position: absolute;
+	}
+	.conVid{
+		margin-top: 41px;
+		width: 981px;
+		margin-left: 22px;
+		height: 410px;
+	}
+	.conForm{
+		z-index: 3;
+	}
+	.form-control:focus {
+  		border-color: #ff9600;
+  		box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 150, 0, 0.6);
+	}
+	#captcha{
+		width: 300px;
+		height: 30px;
+		/*background-color: #EE7752;*/
+		border-radius: 20px;
+    	opacity: 0.6;
+	}
+	.conSub{
+		background-color: rgba(255,255,255,.2);
+		width: 300px;
+		height: 30px;
+		border-radius: 15px;
+	}
+	@keyframes animatedClouds {
+		from { background-position: 0 0; }
+		to { background-position: 100% 0; }
+	}
+	@keyframes animatedFrog {
+		from { background-position: 30px 80px; }
+		to { background-position: 30px 20px; }
+	}
+	@keyframes animatedBird {
+		from { background-position: 20px 20px; }
+		to { background-position: 300px -90px; }
+	}
+	.twitter{
+		height: 20px;
+		width: 20px;
+		margin-left: -10px;
+		background-image: url(src/img/twitter.png);
+		background-size: contain;
+		background-position-x: 3px;
+		background-repeat: no-repeat;
+		background-color: transparent;
+	}
+	.twitter:hover{
+		height: 20px;
+		width: 20px;
+		margin-left: -10px;
+		background-image: url(src/img/twitterWhite.png);
+		background-size: contain;
+		background-position-x: 3px;
+		background-repeat: no-repeat;
+		background-color: 55adee;
+	}
+	.in{
+		height: 20px;
+		width: 20px;
+		margin-left: -10px;
+		background-image: url(src/img/inBlue.png);
+		background-size: contain;
+		background-position-x: 2px;
+		background-repeat: no-repeat;
+		background-color: transparent;
+		/*border: none;*/
+	}
+	.in:hover{
+		height: 20px;
+		width: 20px;
+		margin-left: -10px;
+		background-image: url(src/img/inWhite.png);
+		background-size: contain;
+		background-position-x: 2px;
+		background-repeat: no-repeat;
+		background-color: #007bb5;
+		/*border: none;*/
+	}
+	#standardContent{
+		display: none;
+	}
+	#preloader{
+		display: block;
+		width: 100%;
+		height:100%;
+		position: fixed;
+		top:0px;
+		left:0px;
+		background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+		background-size: 400% 400%;
+		-webkit-animation: Gradient 15s ease infinite;
+		-moz-animation: Gradient 15s ease infinite;
+		animation: Gradient 15s ease infinite;
+		/*background-color: #E73C7E;*/
+	}
+	.glass{
+		border:transparent solid 3px;
+		-moz-box-shadow:0px 0px 2px 0px #333333;
+   		-webkit-box-shadow:0px 0px 2px 0px #333333;
+   		box-shadow:0px 0px 2px 0px #333333;
+	}
+	.animBox{
+		display:none;
+		position:absolute;
+		border:#FFFFFF 3px solid;
+		width:50px;
+		height:50px;
+	}
+	.contactBg{
+		background-image: url(src/img/bg2.png);
+	}
+	.alert{
+		margin-bottom:0px;
+	}
+	</style>
+	<!-- endregion -->
+</head>
+<body onLoad="init()">
+<div id="preloader" class="">
+	<div style="margin:0 auto; font-size:70px;margin-top:30%;text-align: center;">Loading ...</div>
+</div>
+<div class="container" id="standardContent" style="display:none">
+		<br/>
+	<div id="test"></div>
+	<div class="row lazy">
+	<br/>
+	<div id="audioId" style="width:1024px;height:50px"></div>
+	</div>
+	<div class="row lazy" id="themeIcons" style="float:right">
+		<!--
+		<div class="themeIcon" style="float:right;height:10px;width:10px;background-color:#333333" onclick="loadTheme('dark')"></div>
+		<div class="themeIcon" style="float:right;height:10px;width:10px;background-color:cornflowerblue" onclick="loadTheme('blue')"></div>
+		<div class="themeIcon" style="float:right;height:10px;width:10px;background-color:darkkhaki" onclick="loadTheme('green')"></div>
+		<div class="themeIcon" style="float:right;height:10px;width:10px;background-color:purple" onclick="loadTheme('purple')"></div>
+		-->
+	</div>
+	<div class="row lazy" style="margin-top:20px">
+	</div>
+	<div class="row lazy">
+		<div id="canvas-container" style="margin-left:-15px" class="col-xl-12">
+			<canvas id="cv" width="1024px" height="300px"></canvas>
+		</div>
+	</div>
+	<div class="row lazy justify-content-end">
+		<div class="col-sm-1">
+			<div class="rrbox box" style="    width: 30px;
+				margin-top: 80px;
+				margin-left: -160px;
+				position: relative;
+				height: 30px;">&nbsp;</div>
+			<div class="rrbox boxx" style="    width: 60px;
+				margin-top: -75px;
+				margin-left: -113px;
+				position: relative;
+				height: 60px;">&nbsp;</div>
+			<div class="rrbox box" style="width: 40px;
+				margin-top: -35px;
+				margin-left: -20px;
+				position: relative;
+				height: 40px;">&nbsp;</div>
+		</div>
+		<div class="col-sm-1">
+			<div class="ln2 shd">&nbsp;</div>
+		</div>
+		<div class="col-md-auto">
+			<div class="isGlass">
+				<div class="rrbox bg1 animate-area2"><h5> "Be, don't try to become"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  - Osho</h5></div>
+			</div>
+		</div>
+		<div class="col-sm-1">
+			<div class="ln1 shd">&nbsp;</div>
+		</div>
+		<div class="col-sm-2">
+			<img style="margin-top:-200px; height:150px; width:150px" alt="Vinodkumar G B" class="rrcircle" id="profileImg" src='src/img/profile.jpg'></img>
+		</div>
+	</div>
+	<div class="row lazy" id="abt">
+		<div class="col-xl-12 isGlass">
+			<div class="rrbox" style="margin:0px;height:250px;width:985px" id="aboutMe"></div>
+			<div id="aboutMeBg" style="width:980px;height:250px;position:absolute;top:0px;left:15px"></div>
+		</div>
+	</div>
+	<div class="row lazy justify-content-end">
+		<div class="col-sm-1">
+			<div class="rrbox box" style="    width: 30px;
+				margin-top: 20px;
+				margin-left: -160px;
+				position: relative;
+				height: 30px;">&nbsp;</div>
+			<div class="rrbox boxx" style="    width: 60px;
+				margin-top: -15px;
+				margin-left: -113px;
+				position: relative;
+				height: 60px;">&nbsp;</div>
+			<div class="rrbox box" style="width: 40px;
+				margin-top: -75px;
+				margin-left: -20px;
+				position: relative;
+				height: 40px;">&nbsp;</div>
+		</div>
+	</div><br/><br/>
+	<div class="row lazy justify-content-end">
+		<div class="isGlass col-xl-12">
+			<div class="" style="
+				width: 30px;
+				margin-top: -20px;
+				margin-left: 30px;
+				position: relative;
+				height: 30px;
+				font-size: 55px;
+				"><span class="hdr">Software</span>
+			</div>
+			<div class="rrbox col-xl-12" style="position: relative;height: 400px; padding-top:50px;">
+				<div style="width: 100%;height: 398px;overflow: hidden;position: absolute;top: 0px;left: 0px;z-index:1">
+					<video preload="preload"  class="video" autoplay="autoplay" loop="loop">
+						<source src="src/img/Sequence 01_7.mp4" type="video/mp4"></source>
+					</video> 
+				</div>
+				<div class="softUp" style="width: 550px; border-right: white thin solid;z-index:3">
+					<div style="height:150px">
+						<div class="soft" style="background-image:url('src/img/aqua.png')" alt="Aquarium" onClick="window.open('https://drive.google.com/open?id=0B3Cap4ShFpeVdkVVMll4Wkg0bFE')"></div>
+						<div class="soft" style="background-image:url('src/img/collage.png')" alt="Photo_Collage" onClick="window.open('https://drive.google.com/open?id=0B3Cap4ShFpeVdmdKaXYyVFVrTVU')"></div>
+						<div class="soft" style="background-image:url('src/img/duplicatefinder.png')" alt="Duplicate_File_Finder" onClick="window.open('https://drive.google.com/open?id=0B3Cap4ShFpeVb0o3V2xDeUxIWVE')"></div>
+					</div>
+					<div style="height:150px">
+						<div class="soft" style="background-image:url('src/img/filebasket.png')" alt="File_Basket" onClick="window.open('https://drive.google.com/open?id=0B3Cap4ShFpeVc2JzUHA4UEZPSW8')"></div>
+						<div class="soft" style="background-image:url('src/img/note.png')" alt="Quick_Note" onClick="window.open('https://drive.google.com/open?id=0B3Cap4ShFpeVRnFtVTRVTVo5ZVU')"></div>
+					</div>
+				</div>
+				<div class="softUp do-nicescrol"  style="left:600px; height: 280px; overflow:auto;padding-right: 10px;"><p>
+					Copyright (c)<br/>
+					2018 Vinodkumar G B<br/>
+					Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:<br/>
+					The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.<br/>
+					THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row lazy justify-content-end">
+			<div class="col-sm-1">
+				<div class="rrbox box" style="    width: 30px;
+					margin-top: 20px;
+					margin-left: -160px;
+					position: relative;
+					height: 30px;">&nbsp;</div>
+				<div class="rrbox boxx" style="    width: 60px;
+					margin-top: -15px;
+					margin-left: -113px;
+					position: relative;
+					height: 60px;opacity:0">&nbsp;</div>
+				<div class="rrbox box" style="width: 40px;
+					margin-top: -75px;
+					margin-left: -20px;
+					position: relative;
+					height: 40px;">&nbsp;</div>
+			</div>
+		</div>
+	<div class="row lazy justify-content-end">
+		<div class="isGlass col-sm-12">
+			<div class="" style="    
+				margin-left: 30px;
+				margin-right: 5px;
+				position: relative;
+				font-size: 55px;
+				line-height: 40px;"><span class="hdr">Games</span></div>
+			<div class="games row shd" style="margin-left: 5px;margin-right: 5px;">
+					<div class="gameAnim1"></div>
+			</div>
+			<div class="row" style="margin-left: 0px">
+				<div class="col-xl-12">
+					<canvas class="shd" id="gameCanvas" width="965px" height="400px"></canvas>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row lazy justify-content-end">
+		<div class="rrbox box" style="
+			width: 40px;
+			margin-top: 10px;
+			margin-right: 900px;
+			position: relative;
+			height: 40px;">&nbsp;</div>
+		<div class="rrbox box" style="
+			width: 30px;
+			margin-top: -30px;
+			margin-right: 55px;
+			position: relative;
+			height: 30px;">&nbsp;</div>
+		<div class="rrbox boxx" style="
+			width: 60px;
+			margin-top: -20px;
+			margin-right: 50px;
+			position: relative;
+			height: 60px;">&nbsp;</div>
+		<div class="isGlass col-sm-12">
+			<div class="" style="    
+				margin-left: 30px;
+				margin-right: 5px;
+				position: relative;
+				font-size: 55px;
+				line-height: 40px;">
+				<span class="hdr">Resume</span>
+			</div>
+			<div class="row" style="margin-left: 10px;margin-right: 10px;" id="resumeId">
+				<div class="col-xl-12 effect2 resume">
+					<div class="animBox" id="resBox1" style="left: 65px;top: 20px">&nbsp;</div>
+					<div class="animBox" id="resBox2" style="left: 20px; top: 215px">&nbsp;</div>
+					<div class="row">
+						<div class="pic" style="position:absolute; left:0px; top:0px; width:100%; height:100%"></div>
+						<div><img src="src/img/profile.jpg" class="resumePic zoomIn" id="resPic" alt:"Vinodkumar G B" /></div>
+						<div class="col-xl-6 resumeHead" id="resTxt">
+						</div>
+						<div class="col-sm-12"><button class="resDwn" onclick="window.open('https://drive.google.com/open?id=1Zbk_e4P1F7fPsRl2bRU07RT04HaGivQa')">Download</button></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row lazy justify-content-end">
+		<div class="rrbox box" style="
+			width: 40px;
+			margin-top: 10px;
+			margin-right: 130px;
+			position: relative;
+			height: 40px;">&nbsp;</div>
+		<div class="rrbox box" style="
+			width: 30px;
+			margin-top: 20px;
+			margin-right: 10px;
+			position: relative;
+			height: 30px;">&nbsp;</div>
+		<div class="rrbox boxx" style="
+			width: 60px;
+			margin-top: 30px;
+			margin-right: 50px;
+			position: relative;
+			height: 60px;">&nbsp;</div>
+		<div class="isGlass col-sm-12" style="overflow: hidden">
+			<div class="" style="    
+				margin-left: 30px;
+				margin-right: 5px;
+				position: relative;
+				font-size: 55px;
+				line-height: 40px;"><span class="hdr">Contact Me!</span></div>
+			<div class="row rrbox contact">
+			<div style="position: relative;
+			left: 0px;
+			top: 0px;
+			width: 100%;
+			background-color: rgba(0,0,0,0.3);
+			border-radius: 3px;" id="cntForm"></div>
+				<div class="col-sm-7 conForm form-group" style="position:absolute";>
+					<form name="conForm" id="conForm">
+						<br/>
+						<label for="conName">Name:</label>
+						<input type="text" value="" name="name" id="conName" class="form-control" required placeholder="Your name" pattern="[a-zA-Z ]{2,15}" title="2-15 Chars"/><br/>
+						<label for="conEmail">Email:</label>
+						<input type="email" name="email" value="" id="conEmail" class="form-control" required placeholder="Enter a valid email address"/><br/>
+						<label for="conTxt">Message:</label>
+						<textarea id="conTxt" name="message" class="form-control" required placeholder="Hi!"></textarea><br/>
+					</form>
+					<div id="resForm" class="alert"></div>
+					<div>
+						<div class="" style="margin-left:0px">
+								<div style="margin-top: 2px; float:left;">
+									<iframe src="https://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.vinodkumargb.somee.com%2F&width=96&layout=button&action=like&size=small&show_faces=true&share=true&height=65&appId=645208468824668" width="96" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+								</div>
+								<div style="float:left;width:20px;margin-top: -1px;margin-left: 15px;">
+									<button title="Twitter" type="button" class="btn btn-md btn-info twitter" onclick="window.open('https://twitter.com/vinodkumargb')">&nbsp;</button>
+								</div>
+								<div style="float:left;width:20px;margin-top: -1px;margin-left: 10px;">
+									<button title="LinkedIn" type="button" class="btn btn-md btn-info in" onclick="window.open('https://www.linkedin.com/in/vinodkumar-gb-a8324945')">&nbsp;</button>
+								</div>
+						</div>
+						<div class="conSub" style="float: right;">
+							<canvas id="captcha" style="float:left; margin-right:10px" width="300px" height="30px"></canvas>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-12" style"width:400px;float:right>
+					<div class="col-sm-5" id="earthId"></div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	<div class="row lazy justify-content-end">
+	</div>
+	<br/>
+	<br/>
+</div>
