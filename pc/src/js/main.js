@@ -1263,9 +1263,10 @@ function contact(){
 							data: $('#conForm').serialize()
 						  })
 						.done(function(result) {
-							$("#resForm").html(result);
+							$("#resForm").html("Thank you for the words!");
 							$("#resForm").removeClass("alert-danger");
 							$("#resForm").addClass("alert-success");
+							$("#conForm")[0].reset();
 						})
 						.fail(function(result) {
 							$("#resForm").html(result.responseText);
