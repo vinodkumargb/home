@@ -1255,9 +1255,10 @@ function contact(){
 						//document.getElementById("conForm").submit();
 						//var url="../saveData.asp";
 						//var url="http://www.vinodkumargb.somee.com/saveData.asp";
-						var url="https://formspree.io/vinodkumargb@email.com";
+						var url="https://formcarry.com/s/Bk-Vcmm0f";
 						var jqxhr = $.ajax({
-							method: "POST",
+							type: "POST",
+							dataType: "json",
 							url: url,
 							data: $('#conForm').serialize()
 						  })
