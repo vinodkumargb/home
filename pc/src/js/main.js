@@ -1266,7 +1266,9 @@ function contact(){
 							$("#resForm").html("Thank you for the words!");
 							$("#resForm").removeClass("alert-danger");
 							$("#resForm").addClass("alert-success");
-							$("#conForm")[0].reset();
+							setTimeout(function(){
+								$("#conForm")[0].reset();
+							},2000);
 						})
 						.fail(function(result) {
 							$("#resForm").html(result.responseText);
