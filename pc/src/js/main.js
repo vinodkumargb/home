@@ -6,8 +6,7 @@ var theme={
 	dark:{
 		lineClr:"#ffffff",
 		txtClr:"#ffffff",
-		bg:"src/img/1.png",
-		bgScroll:"false",
+		bg:"src/img/1.jpg",
 		bgSize:"cover",
 		bgClr:"#333333",
 		iconBg:"#333333",
@@ -17,7 +16,6 @@ var theme={
 		lineClr:"cornflowerblue",
 		txtClr:"white",
 		bg:"src/img/blue1.jpg",
-		bgScroll:"true",
 		bgSize:"unset",
 		bgClr:"cornflowerblue",
 		iconBg:"cornflowerblue",
@@ -27,7 +25,6 @@ var theme={
 		lineClr:"darkkhaki",
 		txtClr:"white",
 		bg:"src/img/green.jpg",
-		bgScroll:"false",
 		bgSize:"cover",
 		bgClr:"darkkhaki",
 		iconBg:"darkkhaki",
@@ -37,7 +34,6 @@ var theme={
 		lineClr:"#C25996",
 		txtClr:"purple",
 		bg:"src/img/purple.jpg",
-		bgScroll:"false",
 		bgSize:"cover",
 		bgClr:"white",
 		iconBg:"purple",
@@ -46,8 +42,7 @@ var theme={
 	glass:{
 		lineClr:"transparent",
 		txtClr:"rgba(255,255,255,0.6)",
-		bg:"src/img/glass.png",
-		bgScroll:"false",
+		bg:"src/img/glass.jpg",
 		bgSize:"cover",
 		bgClr:"white",
 		iconBg:"transparent",
@@ -167,20 +162,21 @@ function loadTheme(thm){
 	$(".hdr").each(function(){
 		$(this).css("color",t.txtClr);
 	});
-	$("body").css("background-image","url('"+t.bg+"')");
-	if(t.bgScroll==="true"){
-		$("body").css("background-attachment","scroll");
-	}else{
-		$("body").css("background-attachment","fixed");
-	}
-	$("body").css("background-size",t.bgSize);
-	$("body").css("background-color",t.bgClr);
 
-	//$("body").css("background-size","100%");
+	var newImg = new Image;
+	newImg.onload = function() {
+		$("#bgImg").fadeOut("slow","linear",function(){
+			$("#bgImg").css("background-image","url('"+t.bg+"')");
+			$("#bgImg").fadeIn("slow","linear");
+		});
+	}
+	newImg.src = t.bg;
 }
 
 function createThemeIcons(){
+	var i=0;
 	for (var obj in theme){
+		i++;
 		var o=theme[obj];
 		var icon=$("<div class='themeIcon' title='"+o.title+"' style='float:right;height:10px;width:10px;background-color:"+o.iconBg+"' onclick='loadTheme("+'"'+o.title+'"'+")'></div>");
 		$("#themeIcons").append(icon);
@@ -865,7 +861,7 @@ function util(){
 
 		function gameLoop(){
 			if(basic)return;
-			$("#test").html(fps);
+			//$("#test").html(fps);
 			if(fps<20){
 				if(confirm("Frame rate dropping!\nWould you like to switch to Basic version?")){
 					loadBasic("true");
@@ -1258,7 +1254,8 @@ function contact(){
 					if(validConForm()){
 						//document.getElementById("conForm").submit();
 						//var url="../saveData.asp";
-						var url="http://www.vinodkumargb.somee.com/saveData.asp";
+						//var url="http://www.vinodkumargb.somee.com/saveData.asp";
+						var url="https://formspree.io/vinodkumargb@email.com";
 						var jqxhr = $.ajax({
 							method: "POST",
 							url: url,
@@ -1481,6 +1478,7 @@ function scrollControl(){
 				scope.initBirds.play();
 			}
 		}else{
+			_abtAnim(false);
 			scope.initBirds.pause();
 		}
 		if(isScrolledIntoView("cv")){
